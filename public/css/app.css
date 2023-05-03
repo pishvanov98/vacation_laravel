@@ -10778,3 +10778,27 @@ textarea.form-control-lg {
   margin-right: 10px;
   text-decoration: none;
 }
+.container .action form {
+  display: inline-block;
+}
+.container .action form input {
+  border: none;
+  background: no-repeat;
+  color: var(--bs-link-color);
+}
+.container .no_active a {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+.container .no_active.admin a {
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--bs-link-color);
+}
+.container .admin_edit {
+  display: flex;
+  justify-content: space-between;
+}

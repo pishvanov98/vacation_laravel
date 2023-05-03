@@ -28,7 +28,22 @@
                                     <th scope="row">{{$vacation->id}}</th>
                                     <td>{{$vacation->employee}}</td>
                                     <td>{{date('d.m.Y', strtotime($vacation->date_start))}} - {{date('d.m.Y', strtotime($vacation->date_end))}}</td>
-                                    <td class="action"><a href="{{route('vacation.edit',$vacation->id)}}">Изменить</a><a href="#">Удалить</a></td>
+                                    @if($name_user == $vacation->employee)
+                                    <td class="action">
+                                        <a href="{{route('vacation.edit',$vacation->id)}}">Изменить</a>
+                                        <form action="{{route('vacation.destroy',$vacation->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="submit" value="Удалить">
+                                        </form>
+                                    </td>
+                                    @else
+                                        @if($vacation->confirmed == '0')
+                                            <td class="no_active @if($admin) admin @endif "><a href="{{route('vacation.edit',$vacation->id)}}">Не подтверждено</a></td>
+                                        @else
+                                            <td class="no_active @if($admin) admin @endif "><a href="{{route('vacation.edit',$vacation->id)}}">Подтверждено</a></td>
+                                        @endif
+                                    @endif
                                 </tr>
 
                             @endforeach

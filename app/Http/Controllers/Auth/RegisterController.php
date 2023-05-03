@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        if($data['email'] == 'rikovoditel@gmail.com'){
+        if($data['email'] == 'rukovoditel@gmail.com'){
             $user->assignRole('admin');
         }else{
             $user->assignRole('user');

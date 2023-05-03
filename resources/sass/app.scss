@@ -14,9 +14,40 @@
         justify-content: flex-end;
         margin-bottom: 10px;
     }
-    .action a{
-        margin-right: 10px;
-        text-decoration: none;
+    .action {
+        a{
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        form{
+            display: inline-block;
+            input{
+                border: none;
+                background: no-repeat;
+                color: var(--bs-link-color);
+            }
+        }
     }
+    .no_active{
+        a{
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
+            color: black;
+        }
+        &.admin{
+            a{
+                pointer-events: auto;
+                cursor: pointer;
+                text-decoration: none;
+                color: var(--bs-link-color);
+            }
+        }
+    }
+
+.admin_edit{
+    display: flex;
+    justify-content: space-between;
+}
 
 }

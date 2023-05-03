@@ -22,5 +22,6 @@ Route::get('/vacation/create', 'VacationController@create')->name('vacation.crea
 Route::post('/vacation','VacationController@store')->name('vacation.store');
 Route::get('/vacation/{id}/edit', 'VacationController@edit')->name('vacation.edit');
 Route::patch('/vacation/{id}', 'VacationController@update')->name('vacation.update');
+Route::delete('/vacation/{id}', 'VacationController@destroy')->name('vacation.destroy');
 
 

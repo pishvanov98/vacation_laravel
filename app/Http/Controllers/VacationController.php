@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
 use App\Models\Vacation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -55,11 +56,20 @@ class VacationController extends Controller
     public function edit(Request $request){
 
         $id=$request->route('id');
+
+        $user=$request->user();
+        $user_obj = User::find($user->id);
+        $admin=false;
+        if($user_obj->hasRole("admin")) {
+            $admin=true;
+        }
+
         $vacation=  Vacation::find($id);
-        return view('vacation_update',compact('vacation'));
+        return view('vacation_update',compact('vacation','admin'));
     }
 
     public function update(Request $request){
+
         $id=$request->route('id');
         $validator = Validator::make($request->all(), [
             'startDate' => 'required',
@@ -81,13 +91,35 @@ class VacationController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             }
-            $array=[
-                'date_start'=>$data['startDate'],
-                'date_end'=>$data['endDate']
-            ];
+
+
             $vacation= Vacation::find($id);//получили по id данные колонки
+
+            if(isset($data['submit_admin'])){
+
+            $confirmed=0;
+            if($vacation->confirmed == '0'){
+                $confirmed=1;
+            }
+                $array=[
+                    'confirmed'=>$confirmed
+                ];
+            }else{
+                $array=[
+                    'date_start'=>$data['startDate'],
+                    'date_end'=>$data['endDate']
+                ];
+            }
+
             $vacation->update($array);//обновили колонку
         }
+        return redirect('/home');
+    }
+
+    public function destroy(Request $request){
+        $id=$request->route('id');
+        $Vacation= Vacation::find($id);
+        $Vacation->delete();
         return redirect('/home');
     }
 

@@ -27,9 +27,12 @@
                 <input id="startDate" value="{{$vacation->date_start}}" name="startDate" class="form-control" type="date" />
                 <label for="endDate">Дата конца отпуска</label>
                 <input id="endDate" value="{{$vacation->date_end}}" name="endDate" class="form-control" type="date" />
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3 mt-2">Изменить</button>
-                </div>
+                    <div class="col-auto @if($admin)  admin_edit @endif ">
+                        <button type="submit" class="btn btn-primary mb-3 mt-2">Изменить</button>
+                        @if($admin)
+                            <button type="submit" name="submit_admin" value = "submit_admin" class="btn btn-primary mb-3 mt-2"> @if($vacation->confirmed == '0') Подтвердить @else Убрать подтверждение  @endif</button>
+                        @endif
+                    </div>
             </form>
 
 
