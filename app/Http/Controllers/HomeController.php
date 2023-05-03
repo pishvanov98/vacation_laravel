@@ -32,7 +32,7 @@ class HomeController extends Controller
             $admin=true;
         }
         $name_user= $user->name;
-        $vacations=Vacation::orderBy('updated_at', 'desc')->get();
+        $vacations=Vacation::orderBy('updated_at', 'desc')->Paginate(20);
 
         return view('home', compact('vacations','name_user','admin'));
     }

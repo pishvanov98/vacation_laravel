@@ -51,13 +51,13 @@
                                 </tr>
 
                             @endforeach
-
                         @endif
 
                         </tbody>
                     </table>
                 </div>
             </div>
+            {{$vacations->links()}}
         </div>
     </div>
 </div>
