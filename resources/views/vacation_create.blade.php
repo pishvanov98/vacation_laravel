@@ -9,7 +9,19 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <form class="col-md-8">
+
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form class="col-md-8" method="post" action="{{route('vacation.store')}}">
+                @csrf
                 <label for="startDate">Дата начала отпуска</label>
                 <input id="startDate" name="startDate" class="form-control" type="date" />
                 <label for="endDate">Дата конца отпуска</label>

@@ -19,5 +19,6 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/vacation/create', 'VacationController@create')->name('vacation.create');
+Route::post('/vacation','VacationController@store')->name('vacation.store');
 
 
