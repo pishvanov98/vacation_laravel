@@ -28,7 +28,7 @@
                                     <th scope="row">{{$vacation->id}}</th>
                                     <td>{{$vacation->employee}}</td>
                                     <td>{{date('d.m.Y', strtotime($vacation->date_start))}} - {{date('d.m.Y', strtotime($vacation->date_end))}}</td>
-                                    <td class="action"><a href="#">Изменить</a><a href="#">Удалить</a></td>
+                                    <td class="action"><a href="{{route('vacation.edit',$vacation->id)}}">Изменить</a><a href="#">Удалить</a></td>
                                 </tr>
 
                             @endforeach
