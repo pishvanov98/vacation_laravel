@@ -7,3 +7,16 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.container{
+    .wrapper_top_button_content{
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+    }
+    .action a{
+        margin-right: 10px;
+        text-decoration: none;
+    }
+
+}

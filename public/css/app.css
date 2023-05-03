@@ -10768,3 +10768,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.container .wrapper_top_button_content {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.container .action a {
+  margin-right: 10px;
+  text-decoration: none;
+}
