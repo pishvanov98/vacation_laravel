@@ -19,18 +19,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Пишванов Никита Сергеевич</td>
-                            <td>07.03.2022-14.03.2022</td>
-                            <td class="action"><a href="#">Изменить</a><a href="#">Удалить</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Пишванов Никита Сергеевич</td>
-                            <td>10.03.2022-14.03.2022</td>
-                            <td class="action"><a href="#">Изменить</a><a href="#">Удалить</a></td>
-                        </tr>
+
+                        @if($vacations)
+
+                            @foreach($vacations as $vacation)
+
+                                <tr>
+                                    <th scope="row">{{$vacation->id}}</th>
+                                    <td>{{$vacation->employee}}</td>
+                                    <td>{{date('d.m.Y', strtotime($vacation->date_start))}} - {{date('d.m.Y', strtotime($vacation->date_end))}}</td>
+                                    <td class="action"><a href="#">Изменить</a><a href="#">Удалить</a></td>
+                                </tr>
+
+                            @endforeach
+
+                        @endif
+
                         </tbody>
                     </table>
                 </div>
